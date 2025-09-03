@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
+    <title>MUHAMMED RAEES C M - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* --- THEME AND COLOR VARIABLES --- */
+        :root {
+            /* Light Mode Colors (Monochromatic) */
+            --primary-color: #000000; /* Black for accents */
+            --secondary-color: #343a40; /* Dark Grey */
+            --text-color: #212529; /* Almost Black */
+            --light-text-color: #6c757d; /* Medium Grey */
+            --bg-light: #f8f9fa; /* Very Light Grey - NOW FOR SECTIONS */
+            --bg-white: #ffffff; /* White - NOW FOR MAIN BACKGROUND */
+            --border-color: #dee2e6; /* Light Grey Border */
+            --shadow: 0 4px 15px rgba(0,0,0,0.08);
+            --border-radius: 10px;
+        }
+
+        html[data-theme='dark'] {
+            /* Dark Mode Colors (Monochromatic) */
+            --primary-color: #ffffff; /* White for accents */
+            --secondary-color: #212529; /* Almost Black */
+            --text-color: #f8f9fa; /* Almost White */
+            --light-text-color: #adb5bd; /* Lighter Grey */
+            --bg-light: #343a40; /* Lighter Dark BG - NOW FOR SECTIONS */
+            --bg-white: #212529; /* Main Dark BG - NOW FOR MAIN BACKGROUND */
+            --border-color: #495057; /* Darker Grey Border */
+            --shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,345 +40,371 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background-color: #f8f9fa;
+            color: var(--text-color);
+            background-color: var(--bg-white);
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 40px 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border-radius: 10px;
-            margin-top: 20px;
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--bg-white);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease;
         }
 
-        header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
+        nav .logo { font-size: 1.8em; font-weight: 700; color: var(--primary-color); text-decoration: none; }
+        nav ul { list-style: none; display: flex; align-items: center; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a { text-decoration: none; color: var(--text-color); font-weight: 600; transition: color 0.3s ease; }
+        nav ul li a:hover { color: var(--primary-color); }
 
-        .section {
-            background: white;
-            margin-bottom: 30px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .section h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .summary {
-            font-size: 1.1em;
-            line-height: 1.7;
-            color: #555;
-        }
-
-        .course-item, .cert-item, .exp-item {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .course-item h3, .cert-item h3, .exp-item h3 {
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .course-item p, .cert-item p, .exp-item p {
-            color: #666;
-            margin-bottom: 5px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-
-        .skill-category h3 {
-            color: #333;
-            margin-bottom: 15px;
-        }
-
-        .skill-list {
-            list-style: none;
-        }
-
-        .skill-list li {
-            background: #667eea;
-            color: white;
-            padding: 5px 10px;
-            margin: 5px 0;
-            border-radius: 20px;
-            font-size: 0.9em;
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        .badges-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .badge-item {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            border: 2px solid #e9ecef;
-            transition: transform 0.3s ease;
-        }
-
-        .badge-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .badge-icon {
-            width: 60px;
-            height: 60px;
-            background: #667eea;
-            border-radius: 50%;
-            margin: 0 auto 15px;
+        /* --- Theme Switcher --- */
+        .theme-switcher { display: flex; align-items: center; cursor: pointer; position: relative; width: 50px; height: 26px; margin-left: 20px; }
+        .theme-switcher input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; display: flex; align-items: center; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; z-index: 2; }
+        input:checked + .slider { background-color: var(--primary-color); }
+        input:checked + .slider:before { transform: translateX(24px); }
+        .slider .icon { font-size: 1em; position: absolute; z-index: 1; }
+        .slider .icon.sun { left: 5px; color: var(--text-color); }
+        .slider .icon.moon { right: 5px; color: var(--text-color); }
+        
+        /* --- Hero Section --- */
+        #hero {
+            background: var(--bg-white);
+            color: var(--text-color);
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5em;
+            padding: 60px 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
+        #hero .container { display: flex; align-items: center; justify-content: center; gap: 60px; flex-wrap: wrap; }
+        #hero .hero-image { flex: 1; min-width: 300px; text-align: center; }
+        #hero .hero-image .placeholder-image {
+            width: 300px; height: 300px;
+            background-color: var(--bg-light);
+            border-radius: 50%;
+            margin: 0 auto;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--light-text-color);
+            font-size: 1.2em;
+            border: 5px solid var(--border-color);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        #hero .hero-image .placeholder-image img { width: 100%; height: 100%; object-fit: cover; }
+        #hero .hero-content { flex: 1.2; min-width: 300px; text-align: left; }
+        #hero .hero-content h1 { font-size: 3.2em; margin-bottom: 10px; line-height: 1.2; color: var(--primary-color); font-weight: 700; }
+        #hero .hero-content p { font-size: 1.2em; opacity: 0.9; margin-bottom: 8px; }
+        #hero .hero-content .subtitle { font-weight: 400; }
+        #hero .hero-content .location { margin-bottom: 30px; font-size: 1em; color: var(--light-text-color); }
+        
+        /* --- Hero Buttons --- */
+        .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn { padding: 12px 28px; font-size: 1em; font-weight: 600; text-decoration: none; border-radius: 50px; transition: all 0.3s ease; border: 2px solid transparent; display: inline-block; }
+        .btn-primary { background-color: var(--primary-color); color: var(--bg-white); border-color: var(--primary-color); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .btn-secondary { background-color: transparent; color: var(--primary-color); border-color: var(--primary-color); }
+        .btn-secondary:hover { background-color: var(--primary-color); color: var(--bg-white); transform: translateY(-3px); }
 
-        .connect-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-align: center;
+        /* --- Section Styling (Floating Effect) --- */
+        .main-content { padding-top: 40px; }
+        .section {
+            background: var(--bg-light);
+            margin-bottom: 40px;
             padding: 40px;
-            border-radius: 10px;
-            margin-top: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
+        .section:hover { transform: translateY(-5px); }
+        .section h2 { color: var(--primary-color); margin-bottom: 25px; font-size: 2.2em; border-bottom: 3px solid var(--primary-color); padding-bottom: 15px; text-align: center; }
+        #about .summary { font-size: 1.15em; line-height: 1.8; color: var(--light-text-color); max-width: 800px; margin: 0 auto; text-align: center; }
 
-        .connect-section h2 {
-            margin-bottom: 20px;
-            border: none;
-            color: white;
+        /* --- Experience & Education --- */
+        .exp-item, .course-item, .cert-item {
+            margin-bottom: 25px; 
+            padding: 20px;
+            background: var(--bg-white); 
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
+        .exp-item:hover, .course-item:hover, .cert-item:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+        .exp-item h3, .course-item h3, .cert-item h3 { color: var(--text-color); margin-bottom: 8px; font-size: 1.5em; }
+        .exp-item p, .course-item p, .cert-item p { color: var(--light-text-color); margin-bottom: 8px; }
+        .exp-duration { color: var(--primary-color); font-weight: 600; }
 
-        .connect-buttons {
+        /* --- Styles for Certificate Item Layout --- */
+        .cert-item {
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            align-items: center;
+            gap: 30px;
             flex-wrap: wrap;
         }
-
-        .connect-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.3);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .cert-details {
+            flex: 2; /* Give more space to text */
+            min-width: 280px;
+        }
+        .cert-image {
+            flex: 1; /* Give less space to image */
+            min-width: 200px;
+            max-width: 300px;
+        }
+        .cert-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        .cert-image img:hover {
+            transform: scale(1.05);
         }
 
-        .connect-btn:hover {
-            background: rgba(255,255,255,0.3);
-            transform: translateY(-2px);
+        /* --- Skills Section --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .skill-category {
+            background: var(--bg-white);
+            padding: 25px 30px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: background-color 0.3s ease;
+        }
+        .skill-category h3 { color: var(--text-color); margin-bottom: 15px; font-size: 1.3em; text-align: center; }
+        .skill-category .skill-text {
+            text-align: center;
+            color: var(--light-text-color);
+            line-height: 1.8;
+            font-size: 1em;
         }
 
-        .exp-duration {
-            color: #667eea;
-            font-weight: bold;
-        }
+        /* --- Contact & Footer --- */
+        #contact { background: var(--secondary-color); color: white; text-align: center; padding: 60px; border-radius: var(--border-radius); margin-top: 10px; }
+        #contact h2 { margin-bottom: 25px; border: none; color: white; font-size: 2.5em; }
+        #contact p { font-size: 1.2em; margin-bottom: 35px; opacity: 0.9; }
+        .connect-buttons { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .connect-btn { background: transparent; color: white; padding: 18px 35px; text-decoration: none; border-radius: 35px; transition: all 0.3s ease; border: 2px solid var(--primary-color); display: flex; align-items: center; gap: 12px; font-size: 1.1em; font-weight: 600; }
+        .connect-btn:hover { background: var(--primary-color); color: var(--bg-white); transform: translateY(-3px) scale(1.02); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        footer { text-align: center; padding: 30px 0; margin-top: 10px; color: var(--light-text-color); font-size: 0.9em; }
 
+        /* --- Media Queries --- */
+        @media (max-width: 992px) {
+            #hero { min-height: auto; padding-top: 100px; padding-bottom: 100px; }
+            #hero .container { flex-direction: column; text-align: center; }
+            #hero .hero-image { order: -1; margin-bottom: 40px; }
+            #hero .hero-content { text-align: center; }
+            #hero .hero-content h1 { font-size: 2.8em; }
+            #hero .hero-content p { font-size: 1.1em; }
+            .hero-buttons { justify-content: center; }
+        }
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-            
-            header h1 {
-                font-size: 2em;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
-            .connect-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .connect-btn {
-                width: 250px;
-                justify-content: center;
-            }
+            nav ul { display: none; }
+            .container { padding: 0 15px; }
+            .section { padding: 30px 20px; }
+            .section h2 { font-size: 1.8em; margin-bottom: 20px; }
+            #hero .hero-content h1 { font-size: 2.2em; }
+            #hero .hero-content p { font-size: 1em; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .connect-buttons { flex-direction: column; align-items: center; }
+            .connect-btn { width: 90%; max-width: 300px; justify-content: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>MUHAMMED RAEES C M</h1>
-            <p>PharmD Graduate-Interested in Clinical Pharmacy, Regulatory affairs and Clinical Research | Thrissur,Kerala</p>
-        </header>
+    <nav>
+        <div class="container">
+            <a href="#hero" class="logo">MUHAMMED RAEES C M</a>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li>
+                    <label class="theme-switcher">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="slider">
+                            <i class="icon fas fa-sun sun"></i>
+                            <i class="icon fas fa-moon moon"></i>
+                        </span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-        <section class="section">
-            <h2>Summary</h2>
-            <div class="summary">
-                <p>Doctor of Pharmacy gaduate with interests in clinical pharmacy practice,regulatory affairs and clinical research.My internship expirience has given me a solid foundation inpatient counselling,drug information and health care research, and I am keen to join an orgaisation where i can grow and make a positive impact.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Experience</h2>
-            <div class="exp-item">
-                <h3>Clinical Pharmacist Intern</h3>
-                <p><strong>P K Das Institute of Medical Science</strong> | <span class="exp-duration">July 2024-July 2025 </span></p>
-                <p>Assisted in Clinical rounds,Patient counselling,ADR reporting, and Drug interactions checking.Gained hands on experience in pharmacotherapy and interdisciplinary patient care.</p>
-            </div>
-            <div class="exp-item">
-                <h3>Clinical Pharmacist Intern</h3>
-                <p><strong>Aster Medcity Hospital,Kochi</strong> | <span class="exp-duration">March 2025 - April 2025 </span></p>
-                <p>Assisted in Clinical rounds,Patient counselling,ADR reporting, and Drug interactions checking.Gained hands on experience in pharmacotherapy and interdisciplinary patient care.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Clinical and Patient Care Skills</h3>
-                    <ul class="skill-list">
-                        <li>Disease knowledge and managment, Drug ineraction analysis.</li>
-                        <li>Blood Pressure Measurement,Medication dosing adjustment,</li>
-                        <li>Pharmacology Expertise,Medication error prevention</li>
-                        <li>Patient counseling, Patient education, Lifestyle modification Guidance</li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3> Technical Skills</h3>
-                    <ul class="skill-list">
-                        <li>Electronic medical records</li>
-                        <li>Pharmacetical Software Proficiency</li>
-                        <li>Prescription processing</li>
-                        <li>Microsoft Excel </li>
-                    </ul>
-                </div>
-                <div class="skill-category">
-                    <h3>Professional Skills</h3>
-                    <ul class="skill-list">
-                        <li>Health care team collaboration</li>
-                        <li>Multitasking abilities</li>
-                        <li>Time Management</li>
-                        <li>Decision Making</li>
-                    </ul>
+    <section id="hero">
+        <div class="container">
+            <div class="hero-image">
+                <div class="placeholder-image">
+                    <img src="photo.png" alt="A professional photo of Muhammed Raees C M">
                 </div>
             </div>
-        </section>
-
-        <section class="section">
-            <h2>Courses Completed</h2>
-            <div class="course-item">
-                <h3>Doctor Of Pharmacy/PharmD</h3>
-                <p><strong>Institution:</strong> Nehru College Of Pharmacy.</p>
-                <p><strong>Completion Date:</strong> July 2025 </p>
-                <p>PharmD is a professional program that trains students to undersand medicines deeply and ensure patient safety and efficacy.</p>
-            </div>
-            <div class="course-item">
-                <h3>nil</h3>
-                <p><strong>Institution/Platform:</strong> Platform Name</p>
-                <p><strong>Completion Date:</strong> Month Year</p>
-                <p>Brief description of the course content and skills gained.</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Certificates</h2>
-            <div class="cert-item">
-                <h3>Certificate Name</h3>
-                <p><strong>Issuing Organization:</strong> Organization Name</p>
-                <p><strong>Issue Date:</strong> Month Year</p>
-                <p><strong>Credential ID:</strong> ABC123 (if applicable)</p>
-            </div>
-            <div class="cert-item">
-                <h3>Another Certificate</h3>
-                <p><strong>Issuing Organization:</strong> Organization Name</p>
-                <p><strong>Issue Date:</strong> Month Year</p>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2>Google Badges & Achievements</h2>
-            <div class="badges-grid">
-                <div class="badge-item">
-                    <div class="badge-icon">🏆</div>
-                    <h3>Google Cloud Badge</h3>
-                    <p>Description of the badge and what it represents</p>
-                </div>
-                <div class="badge-item">
-                    <div class="badge-icon">⭐</div>
-                    <h3>Google Analytics Certified</h3>
-                    <p>Certified in Google Analytics and data analysis</p>
-                </div>
-                <div class="badge-item">
-                    <div class="badge-icon">💡</div>
-                    <h3>Google Ads Certification</h3>
-                    <p>Certified in Google Ads campaign management</p>
+            <div class="hero-content">
+                <h1>MUHAMMED RAEES C M</h1>
+                <p class="subtitle">PharmD Graduate - Interested in Clinical Pharmacy, Regulatory affairs, and Clinical Research</p>
+                <p class="location">Thrissur, Kerala</p>
+                <div class="hero-buttons">
+                    <a href="cv.pdf" download class="btn btn-primary">Download CV</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="connect-section">
-            <h2>Connect With Me</h2>
-            <p>Let's discuss opportunities and collaborations</p>
-            <div class="connect-buttons">
-                <a href="mailto:your.email@example.com" class="connect-btn">
-                    📧 Email Me
-                </a>
-                <a href="https://wa.me/1234567890" class="connect-btn" target="_blank">
-                    📱 WhatsApp
-                </a>
-                <a href="https://linkedin.com/in/yourprofile" class="connect-btn" target="_blank">
-                    💼 LinkedIn
-                </a>
-                <a href="https://github.com/yourusername" class="connect-btn" target="_blank">
-                    👨‍💻 GitHub
-                </a>
-            </div>
-        </section>
+    <div class="main-content">
+        <div class="container">
+            <section id="about" class="section">
+                <h2>About Me</h2>
+                <div class="summary">
+                    <p>Doctor of Pharmacy graduate with strong interests in clinical pharmacy practice, regulatory affairs, and clinical research. My internship experience has given me a solid foundation in patient counseling, drug information, and healthcare research. I am keen to join an organization where I can grow and make a positive impact.</p>
+                </div>
+            </section>
+
+            <section id="experience" class="section">
+                <h2>Experience</h2>
+                <div class="exp-item">
+                    <h3>Clinical Pharmacist Intern</h3>
+                    <p><strong>P K Das Institute of Medical Science</strong> | <span class="exp-duration">July 2024 - July 2025</span></p>
+                    <p>Assisted in clinical rounds, patient counseling, ADR reporting, and drug interaction checking. Gained hands-on experience in pharmacotherapy and interdisciplinary patient care.</p>
+                </div>
+                <div class="exp-item">
+                    <h3>Clinical Pharmacist Intern</h3>
+                    <p><strong>Aster Medcity Hospital, Kochi</strong> | <span class="exp-duration">March 2025 - April 2025</span></p>
+                    <p>Assisted in clinical rounds, patient counseling, ADR reporting, and drug interaction checking. Gained hands-on experience in pharmacotherapy and interdisciplinary patient care.</p>
+                </div>
+            </section>
+
+            <section id="skills" class="section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Clinical and Patient Care</h3>
+                        <p class="skill-text">
+                            Disease Knowledge &amp; Management &bull; Drug Interaction Analysis &bull; Blood Pressure Measurement &bull; Medication Dosing Adjustment &bull; Pharmacology Expertise &bull; Medication Error Prevention &bull; Patient Counseling &bull; Patient Education &bull; Lifestyle Modification Guidance
+                        </p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Technical Skills</h3>
+                        <p class="skill-text">
+                            Electronic Medical Records &bull; Pharmaceutical Software Proficiency &bull; Prescription Processing &bull; Microsoft Excel
+                        </p>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Professional Skills</h3>
+                        <p class="skill-text">
+                            Healthcare Team Collaboration &bull; Multitasking Abilities &bull; Time Management &bull; Decision Making
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="education" class="section">
+                <h2>Education</h2>
+                <div class="course-item">
+                    <h3>Doctor Of Pharmacy/PharmD</h3>
+                    <p><strong>Institution:</strong> Nehru College Of Pharmacy.</p>
+                    <p><strong>Completion Date:</strong> July 2025</p>
+                </div>
+            </section>
+
+            <section id="certifications" class="section">
+                <h2>Certifications & Badges</h2>
+                <div class="cert-item">
+                    <div class="cert-details">
+                         <h3>Good Clinical Practice (GCP)</h3>
+                         <p><strong>Issuing Organization:</strong> NIDA Clinical Trials Network</p>
+                         <p><strong>Completed:</strong> August 2025 | <strong>Expires:</strong> August 2028</p>
+                    </div>
+                    <div class="cert-image">
+                         <img src="gcp-certificate.png" alt="Good Clinical Practice Certificate Image">
+                    </div>
+                </div>
+                 <div class="cert-item">
+                    <div class="cert-details">
+                         <h3>Master's Certificate in Clinical Diagnostics for Clinical Pharmacists</h3>
+                         <p><strong>Issuing Organization:</strong> Geetanjali University & CliMed Academy</p>
+                         <p><strong>Completed:</strong> August 2024</p>
+                    </div>
+                    <div class="cert-image">
+                         <img src="clinical-diagnostics-certificate.jpg" alt="Clinical Diagnostics Certificate Image">
+                    </div>
+                </div>
+                 <div class="cert-item">
+                    <div class="cert-details">
+                         <h3>Introduction to Generative AI</h3>
+                         <p><strong>Issuing Organization:</strong> Google Cloud Skills Boost</p>
+                    </div>
+                    <div class="cert-image">
+                         <img src="gke-badge.png" alt="Introduction to Generative AI image">
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <h2>Connect With Me</h2>
+                <p>Let's discuss opportunities and collaborations</p>
+                <div class="connect-buttons">
+                    <a href="mailto:your.email@example.com" class="connect-btn">📧 Email Me</a>
+                    <a href="https://wa.me/1234567890" class="connect-btn" target="_blank">📱 WhatsApp</a>
+                    <a href="https://linkedin.com/in/yourprofile" class="connect-btn" target="_blank">💼 LinkedIn</a>
+                    <a href="https://github.com/yourusername" class="connect-btn" target="_blank">👨‍💻 GitHub</a>
+                </div>
+            </section>
+        </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Muhammed Raees C M. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+
+        const setTheme = (theme) => {
+            htmlElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.checked = theme === 'dark';
+        };
+
+        themeToggle.addEventListener('change', () => {
+            setTheme(themeToggle.checked ? 'dark' : 'light');
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else {
+            setTheme(prefersDark ? 'dark' : 'light');
+        }
+    </script>
 </body>
 </html>
